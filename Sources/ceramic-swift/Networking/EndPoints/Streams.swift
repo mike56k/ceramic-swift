@@ -5,7 +5,7 @@
 //  Created by Михаил Исаченко on 25.09.2021.
 //
 
-private enum StreamsEnpoint: EndpointProtocol {
+private enum StreamsEnpoint: EndpointProtocol {    
   case state(streamID: String)
   case createStream(didKey: String)
     
@@ -37,11 +37,11 @@ private enum StreamsEnpoint: EndpointProtocol {
       return nil
     case .createStream(let didKey):
         return [
-            ("type", 0),
-            ("genesis", [
-            ("family", "test"),
-            ("controllers", [("did:key:" + didKey)])
-            ])
+            "type": 0,
+            "genesis": [
+                "family": "test",
+                "controllers": ["did:key:" + didKey]
+            ]
         ]
     }
   }

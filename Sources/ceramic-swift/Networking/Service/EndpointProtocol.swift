@@ -10,7 +10,7 @@ public enum Scheme: String {
 }
 
 /// A dictionary of parameters to apply to a `URLRequest`
-public typealias Parameters = [(String, Any)]
+public typealias Parameters = [String: Any]
 
 /// A dictionary of headers to apply to a `URLRequest`
 public typealias HTTPHeaders = [String: String]
@@ -36,7 +36,7 @@ public protocol EndpointProtocol {
   var host: String { get }
   var path: String { get }
   var method: HTTPMethod { get }
-  var parameters: [(String, Any)]? { get }
+    var parameters: [String: Any]? { get }
   var encoding: ParameterEncoding { get }
   var headers: HTTPHeaders? { get }
   var cacheKey: String? { get }

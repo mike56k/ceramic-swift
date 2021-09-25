@@ -57,8 +57,12 @@ final class API {
     var request = URLRequest(url: url)
 
     if endpoint.encoding == .httpBody, endpoint.parameters != nil {
-      let dictionary = endpoint.parameters?.reduce(into: [:]) { $0[$1.0] = $1.1 }
-      let jsonData = try? JSONSerialization.data(withJSONObject: dictionary as Any)
+//      let dictionary = endpoint.parameters?.reduce(into: [:]) { $0[$1.0] = $1.1 }
+        guard let dictionary = endpoint.parameters else {
+            print("Null")
+            return
+        }
+      let jsonData = try? JSONSerialization.data(withJSONObject: dictionary)
       request.httpBody = jsonData
     }
 

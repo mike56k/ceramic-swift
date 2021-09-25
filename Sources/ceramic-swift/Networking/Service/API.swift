@@ -64,6 +64,7 @@ final class API {
         }
       let jsonData = try? JSONSerialization.data(withJSONObject: dictionary)
       request.httpBody = jsonData
+        print(jsonData)
     }
 
     if endpoint.headers != nil {
@@ -84,6 +85,8 @@ final class API {
         }
         return
       }
+        
+        print(data)
 
       guard (200 ... 299) ~= response.statusCode else {
         DispatchQueue.main.async {

@@ -7,6 +7,7 @@
 
 private enum StreamsEnpoint: EndpointProtocol {
   case state(streamID: String)
+  case createStream(didKey: String)
     
   var host: String {
     domain
@@ -16,6 +17,8 @@ private enum StreamsEnpoint: EndpointProtocol {
     switch self {
     case .state(let streamID):
       return "/api/v0/streams/" + String(streamID)
+    case .createStream:
+        return "/api/v0/streams"
     }
   }
 
@@ -23,6 +26,8 @@ private enum StreamsEnpoint: EndpointProtocol {
     switch self {
     case .state:
       return .get
+    case .createStream:
+      return .post
     }
   }
 
@@ -30,6 +35,14 @@ private enum StreamsEnpoint: EndpointProtocol {
     switch self {
     case .state:
       return nil
+    case .createStream(let didKey):
+        return [
+            ("type", 0),
+            ("genesis", [
+            ("family", "test"),
+            ("controllers", ["did:key:" + didKey])
+            ])
+        ]
     }
   }
     
@@ -46,10 +59,15 @@ public final class Stream {
   // MARK: Public
 
   public static let shared = Stream()
-
-    public func getStreamState(streamID: String,
+  
+  public func getStreamState(streamID: String,
                                completion: @escaping (Result<StreamState, APIError>) -> Void) {
     api.request(endpoint: StreamsEnpoint.state(streamID: streamID), completion: completion)
+  }
+    
+  public func createStream(didKey: String,
+                             completion: @escaping (Result<StreamState, APIError>) -> Void) {
+    api.request(endpoint: StreamsEnpoint.createStream(didKey: didKey), completion: completion)
   }
 
   // MARK: Private

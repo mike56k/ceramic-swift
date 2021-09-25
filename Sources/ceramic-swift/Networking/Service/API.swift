@@ -64,7 +64,9 @@ final class API {
         }
       let jsonData = try? JSONSerialization.data(withJSONObject: dictionary)
       request.httpBody = jsonData
-        print(jsonData)
+        if let JSONString = String(data: jsonData!, encoding: String.Encoding.utf8) {
+           print(JSONString)
+        }
     }
 
     if endpoint.headers != nil {

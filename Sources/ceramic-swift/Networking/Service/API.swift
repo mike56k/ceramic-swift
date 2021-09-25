@@ -37,15 +37,15 @@ final class API {
     urlComponents.host = endpoint.host
     urlComponents.path = endpoint.path
 
-    if endpoint.encoding == .queryString, endpoint.parameters != nil {
-      var queryItems = [URLQueryItem]()
-      endpoint.parameters?.forEach { key, value in
-        if let stringValue = value as? String {
-          queryItems.append(URLQueryItem(name: key, value: stringValue))
-        }
-      }
-      urlComponents.queryItems = queryItems
-    }
+//    if endpoint.encoding == .queryString, endpoint.parameters != nil {
+//      var queryItems = [URLQueryItem]()
+//      endpoint.parameters?.forEach { key, value in
+//        if let stringValue = value as? String {
+//          queryItems.append(URLQueryItem(name: key, value: stringValue))
+//        }
+//      }
+//      urlComponents.queryItems = queryItems
+//    }
 
     guard let url = urlComponents.url else {
       DispatchQueue.main.async {

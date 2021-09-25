@@ -65,7 +65,12 @@ extension EndpointProtocol {
   }
 
   public var headers: HTTPHeaders? {
-    [:]
+    switch method {
+    case .post:
+        return ["Content-Type":"application/json"]
+    default:
+        return [:]
+    }
   }
 
   public var cacheKey: String? {

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public let domain = "ceramic-clay.3boxlabs"
+public let domain = "gateway-clay.ceramic.network"
 
 // MARK: - APIError
 

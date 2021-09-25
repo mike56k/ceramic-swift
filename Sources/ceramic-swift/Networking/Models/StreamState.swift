@@ -6,19 +6,19 @@
 //
 
 public struct StreamState: Decodable {
-    let streamID: String
-    let state: State
+    public let streamID: String
+    public let state: State
 }
 
 // MARK: - State
 public struct State: Decodable {
-    let type: Int
-    let content: Content
-    let metadata: Metadata
-    let signature: Int
-    let anchorStatus: String
-    let log: [Log]
-    let doctype: String
+    public let type: Int
+    public let content: Content
+    public let metadata: Metadata
+    public let signature: Int
+    public let anchorStatus: String
+    public let log: [Log]
+    public let doctype: String
 }
 
 // MARK: - Content
@@ -27,13 +27,13 @@ public struct Content: Decodable {
 
 // MARK: - Log
 public struct Log: Decodable {
-    let cid: String
-    let type: Int
+    public let cid: String
+    public let type: Int
 }
 
 // MARK: - Metadata
 public struct Metadata: Decodable {
-    let family: String
-    let controllers: [String]
+    public let family: String
+    public let controllers: [String]
 }
 

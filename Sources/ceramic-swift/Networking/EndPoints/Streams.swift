@@ -40,7 +40,7 @@ private enum StreamsEnpoint: EndpointProtocol {
             ("type", 0),
             ("genesis", [
             ("family", "test"),
-            ("controllers", ["did:key:" + didKey])
+            ("controllers", [("did:key:" + didKey)])
             ])
         ]
     }

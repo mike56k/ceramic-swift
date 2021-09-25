@@ -39,8 +39,10 @@ private enum StreamsEnpoint: EndpointProtocol {
         return [
             "type": 0,
             "genesis": [
-                "family": "test",
-                "controllers": ["did:key:" + didKey]
+                "header": [
+                    "family": "test",
+                    "controllers": ["did:key:" + didKey]
+                ]
             ]
         ]
     }

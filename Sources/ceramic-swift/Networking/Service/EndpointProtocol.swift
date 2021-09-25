@@ -36,7 +36,7 @@ public protocol EndpointProtocol {
   var host: String { get }
   var path: String { get }
   var method: HTTPMethod { get }
-    var parameters: [String: Any]? { get }
+  var parameters: [String: Any]? { get }
   var encoding: ParameterEncoding { get }
   var headers: HTTPHeaders? { get }
   var cacheKey: String? { get }

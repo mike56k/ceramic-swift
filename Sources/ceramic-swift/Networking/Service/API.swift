@@ -49,6 +49,7 @@ final class API {
 
     guard let url = urlComponents.url else {
       DispatchQueue.main.async {
+        print("invalidURL")
         completion(.failure(.invalidURL))
       }
       return
@@ -83,6 +84,8 @@ final class API {
 
       guard let data = data, let response = response as? HTTPURLResponse, error == nil else {
         DispatchQueue.main.async {
+            print("noData")
+
           completion(.failure(.noData))
         }
         return
@@ -92,6 +95,8 @@ final class API {
 
       guard (200 ... 299) ~= response.statusCode else {
         DispatchQueue.main.async {
+            print("incorrectStatusCode")
+
           completion(.failure(.incorrectStatusCode(response.statusCode)))
         }
         return
@@ -112,6 +117,7 @@ final class API {
       } catch {
         DispatchQueue.main.async {
 //          print("===", T.self, String(data: data, encoding: .utf8) as Any)
+            print("decodingError")
           completion(.failure(.decodingError))
         }
       }

@@ -13,7 +13,7 @@ public struct StreamState: Decodable {
     
     private enum CodingKeys: String, CodingKey {
       case streamID = "streamId"
-        case state = "state"
+      case state = "state"
     }
 }
 
